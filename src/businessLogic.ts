@@ -170,6 +170,7 @@ export const mutateApplications = async (params: { applications: IApplication[],
   for (const application of applications) {
     const updatedApplication = await mutateApplication({ application, graphql })
     updatedApplications.push(updatedApplication)
+    console.log(`updated ${updatedApplications.length}/${applications.length}`)
   }
   return updatedApplications
 }

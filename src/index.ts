@@ -46,7 +46,9 @@ const graphql = new GraphQLClient(authenticator)
 void (async () => {
   await authenticator.start()
   try {
+    console.log('fetching apps...')
     const applications = await fetchApplications({ graphql })
+    console.log(`fetched ${applications.length} apps`)
     const updatedApplications = await mutateApplications({ applications, graphql })
     writeFileSync(output, JSON.stringify(updatedApplications, null, 2))
     console.log(`Saved data to ${output}`)
